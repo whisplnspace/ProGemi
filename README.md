@@ -15,7 +15,7 @@ GemiBot is designed to provide intelligent and responsive interactions, leveragi
 
 1.Clone the repository:
 ```bash
-  git clone https://github.com/yourusername/GemiBot.git
+  git clone https://github.com/whisplnspace/GemiBot.git
 ```
 2.Navigate to the project directory:
 ```bash
