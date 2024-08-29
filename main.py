@@ -3,7 +3,7 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 import google.generativeai as gen_ai
-
+import time
 
 # Load environment variables
 load_dotenv()
@@ -46,12 +46,19 @@ for message in st.session_state.chat_session.history:
 # Input field for user's message
 user_prompt = st.chat_input("Ask ProGemi....")
 if user_prompt:
-    # Add user's message to chat and display it
+   
     st.chat_message("user").markdown(user_prompt)
 
-    # Send user's message to Gemini-Pro and get the response
+  
     gemini_response = st.session_state.chat_session.send_message(user_prompt)
 
-    # Display Gemini-Pro's response
-    with st.chat_message("assistant"):
-        st.markdown(gemini_response.text)
+   
+    response_placeholder = st.chat_message("assistant")
+    full_response_text = ""
+
+ 
+    response_text = gemini_response.text.splitlines()  
+    for line in response_text:
+        full_response_text += line + "\n" 
+        response_placeholder.markdown(full_response_text)  
+        time.sleep(0.1) 
